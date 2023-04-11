@@ -9,3 +9,4 @@ The hardware consists of the following:
   - A current sensor to measure current on the output (120 V) side. 
 - Two Renogy Rover solar charge controllers. 
 
+All data is pushed to a mysql server. 
