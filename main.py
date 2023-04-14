@@ -43,6 +43,7 @@ def updateDB():
         print("Sending row:", solar1Power, solar2Power, wind1Power, wind2Power, loadPower, windSpeed, solarIntensity)
         try:
             database.addRow(solar1Power, solar2Power, wind1Power, wind2Power, loadPower, windSpeed, solarIntensity)
+            break
         except:
             print("Failed to send, attempting reconnection...")
             try:
