@@ -33,7 +33,7 @@ class solarcharger:
         while True:
             try:
                 self.dataQueue.append(self.getSolarPower())
-                if(len(self.dataQueue)>60):
+                if(len(self.dataQueue)>1/constants.averageResolution):
                     self.dataQueue.pop(0)
             except Exception as e:
                 print("Solar charger error: ", e)

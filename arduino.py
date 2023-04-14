@@ -62,6 +62,12 @@ class arduino:
                 self.solarIntensity.append(float(dataValues[0]))
                 self.windSpeed.append(float(dataValues[1]))
                 self.loadPower.append(float(dataValues[2]))
+                if(len(self.solarIntensity)>1/constants.averageResolution):
+                    self.solarIntensity.pop()
+                if(len(self.windSpeed)>1/constants.averageResolution):
+                    self.windSpeed.pop()
+                if(len(self.loadPower)>1/constants.averageResolution):
+                    self.loadPower.pop()
             except Exception as e:
                 print("Arduino error: ", e)
                 continue

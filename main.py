@@ -30,12 +30,12 @@ def updateDB():
         try:
             database.addRow(solar1Power, solar2Power, wind1Power, wind2Power, loadPower, windSpeed, solarIntensity)
             break
-        except:
-            print("Failed to send, attempting reconnection...")
+        except Exception as e:
+            print("Failed to send, attempting reconnection...", "Explanation: ", e)
             try:
                 database = sqlConnection(SQL_HOST_IP, SQL_USER_NAME, SQL_PASSWORD)
             except:
-                print("Failed to reconnect, retrying...")
+                print("Failed to reconnect, retrying...", "Explanation: ", e)
                 continue
 
 
