@@ -32,6 +32,7 @@ def updateDB():
     """Attempts to send the latest data for all sensors to the server until it succeeds. Should be run periodically.
     """
     while True:
+        print("Running hourly fetch...")
         loadPower = arduino.pollLoadPower()
         windSpeed = arduino.pollWindSpeed()
         solarIntensity = arduino.pollSolarIntensity()
@@ -39,16 +40,19 @@ def updateDB():
         solar2Power = solarCharger2.poll()
         wind1Power = windTurbine1.getPower(windSpeed)
         wind2Power = windTurbine2.getPower(windSpeed)
+        print("Sending row:", solar1Power, solar2Power, wind1Power, wind2Power, loadPower, windSpeed, solarIntensity)
         try:
             database.addRow(solar1Power, solar2Power, wind1Power, wind2Power, loadPower, windSpeed, solarIntensity)
         except:
+            print("Failed to send, attempting reconnection...")
             try:
                 database = sqlConnection(SQL_HOST_IP, SQL_USER_NAME, SQL_PASSWORD)
             except:
+                print("Failed to reconnect, retrying...")
                 continue
 
 
 scheduler = BlockingScheduler()
-scheduler.add_job(updateDB, 'interval', hours=1)
+scheduler.add_job(updateDB, 'interval', minutes=1)
 scheduler.start()
 print("Exiting")
