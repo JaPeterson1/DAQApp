@@ -1,5 +1,5 @@
 from arduino import arduino as arduinoHelper
-from solarcharger import solarcharger
+from solarchargerSim import solarcharger
 from windTurbine1 import windTurbine
 from apscheduler.schedulers.blocking import BlockingScheduler
 from sql import sqlConnection
@@ -50,3 +50,4 @@ def updateDB():
 
 scheduler = BlockingScheduler()
 scheduler.add_job(updateDB, 'interval', hours=1)
+print("Exiting")
