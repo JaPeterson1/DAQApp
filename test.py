@@ -14,11 +14,11 @@ while(True):
         database.addRow(7,6,5,4,3,2,1)
         print("added row")
     except Exception as e:
-        print(e)
+        print("SQL error:", e)
         try:
             database = sqlConnection(SQL_HOST_IP, SQL_USER_NAME, SQL_PASSWORD)
         except Exception as e:
-            print(e)
+            print("SQL connection error: ", e)
             continue
         database.addRow(7,6,5,4,3,2,1)
     time.sleep(10)

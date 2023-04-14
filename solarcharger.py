@@ -35,7 +35,7 @@ class solarcharger:
                 if(len(self.dataQueue)>60):
                     self.dataQueue.pop(0)
             except Exception as e:
-                print(e)
+                print("Solar charger error: ", e)
                 continue
             time.sleep(60) #Sleep for 60s
     

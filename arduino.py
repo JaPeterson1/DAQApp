@@ -58,11 +58,11 @@ class arduino:
                 dataValues = dataStr.split(",")
                 if not len(dataValues) == 3:
                     continue
-                self.solarIntensity.push(float(dataValues[0]))
-                self.windSpeed.push(float(dataValues[1]))
-                self.totalPower.push(float(dataValues[2]))
+                self.solarIntensity.append(float(dataValues[0]))
+                self.windSpeed.append(float(dataValues[1]))
+                self.totalPower.append(float(dataValues[2]))
             except Exception as e:
-                print(e)
+                print("Arduino error: ", e)
                 continue
             time.sleep(60)
 
