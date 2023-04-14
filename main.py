@@ -12,9 +12,9 @@ arduino = arduinoHelper(ARDUINO_PORT)
 windTurbine1 = windTurbine(WIND_TURBINE_1_RADIUS_METERS, WIND_TURBINE_1_EFFICIENCY, WIND_TURBINE_1_AIR_DENSITY)
 windTurbine2 = windTurbine(WIND_TURBINE_2_RADIUS_METERS, WIND_TURBINE_2_EFFICIENCY, WIND_TURBINE_2_AIR_DENSITY)
 
-database = sqlConnection(SQL_HOST_IP, SQL_USER_NAME, SQL_PASSWORD)
+DB = sqlConnection(SQL_HOST_IP, SQL_USER_NAME, SQL_PASSWORD)
 
-def updateDB():
+def updateDB(database):
     """Attempts to send the latest data for all sensors to the server until it succeeds. Should be run periodically.
     """
     while True:
@@ -40,6 +40,6 @@ def updateDB():
 
 
 scheduler = BlockingScheduler()
-scheduler.add_job(updateDB, 'interval', seconds=serverUpdateFrequency)
+scheduler.add_job(updateDB, 'interval', seconds=serverUpdateFrequency, args=(DB,))
 scheduler.start()
 print("Exiting")
