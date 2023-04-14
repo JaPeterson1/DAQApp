@@ -50,4 +50,5 @@ def updateDB():
 
 scheduler = BlockingScheduler()
 scheduler.add_job(updateDB, 'interval', hours=1)
+scheduler.start()
 print("Exiting")
