@@ -1,6 +1,7 @@
 import serial
 import time
 import threading
+import constants
 
 class arduino:
     def __init__(self, port):
@@ -64,7 +65,7 @@ class arduino:
             except Exception as e:
                 print("Arduino error: ", e)
                 continue
-            time.sleep(60)
+            time.sleep(constants.serverUpdateFrequency*constants.averageResolution)
 
     def pollSolarIntensity(self):
         """Get the average solar intensity over the last hour. 

@@ -1,5 +1,6 @@
 from solarshed.controllers.renogy_rover import RenogyRover
 import threading
+import constants
 import time
 
 class solarcharger:
@@ -37,7 +38,7 @@ class solarcharger:
             except Exception as e:
                 print("Solar charger error: ", e)
                 continue
-            time.sleep(60) #Sleep for 60s
+            time.sleep(constants.serverUpdateFrequency*constants.averageResolution) #Sleep for 60s
     
     def poll(self): #get average hourly power
         """Get the average power across all the minute measurements.
