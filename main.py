@@ -40,6 +40,6 @@ def updateDB():
 
 
 scheduler = BlockingScheduler()
-scheduler.add_job(updateDB, 'interval', minutes=1)
+scheduler.add_job(updateDB, 'interval', seconds=serverUpdateFrequency)
 scheduler.start()
 print("Exiting")
