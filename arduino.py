@@ -14,7 +14,7 @@ class arduino:
         self.solarIntensity = []
         self.windSpeed = []
         self.loadPower = []
-        self.serial = serial.Serial(port, 9600, timeout=.1)
+        self.serial = serial.Serial(port, 115200, timeout=.1)
         self.serial.reset_input_buffer()
         t = threading.Thread(target=self.updateThread)
         t.daemon = True
@@ -52,7 +52,6 @@ class arduino:
         """
         while True:
             try:
-                self.updateData()
                 dataStr = self.updateData()
                 if(len(dataStr)==0):
                     continue

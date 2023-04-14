@@ -4,13 +4,16 @@ from windTurbine1 import windTurbine
 from apscheduler.schedulers.blocking import BlockingScheduler
 from sql import sqlConnection
 from constants import *
+import time
 
 
 solarCharger1 = solarcharger(SOLAR_CHARGER_1_PORT)
 solarCharger2 = solarcharger(SOLAR_CHARGER_2_PORT)
-arduino = arduinoHelper(ARDUINO_PORT)
 windTurbine1 = windTurbine(WIND_TURBINE_1_RADIUS_METERS, WIND_TURBINE_1_EFFICIENCY, WIND_TURBINE_1_AIR_DENSITY)
 windTurbine2 = windTurbine(WIND_TURBINE_2_RADIUS_METERS, WIND_TURBINE_2_EFFICIENCY, WIND_TURBINE_2_AIR_DENSITY)
+arduino = arduinoHelper(ARDUINO_PORT)
+print("Connecting...")
+time.sleep(5)
 
 DB = sqlConnection(SQL_HOST_IP, SQL_USER_NAME, SQL_PASSWORD)
 
