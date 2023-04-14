@@ -71,7 +71,7 @@ class arduino:
             except Exception as e:
                 print("Arduino error: ", e)
                 continue
-            time.sleep(constants.serverUpdateFrequency*constants.averageResolution)
+            time.sleep(float(constants.serverUpdateFrequency)*constants.averageResolution)
 
     def pollSolarIntensity(self):
         """Get the average solar intensity over the last hour. 
