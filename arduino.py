@@ -12,7 +12,7 @@ class arduino:
         self.port = port
         self.solarIntensity = []
         self.windSpeed = []
-        self.totalPower = []
+        self.loadPower = []
         self.serial = serial.Serial(port, 9600, timeout=.1)
         self.serial.reset_input_buffer()
         t = threading.Thread(target=self.updateThread)
@@ -60,7 +60,7 @@ class arduino:
                     continue
                 self.solarIntensity.append(float(dataValues[0]))
                 self.windSpeed.append(float(dataValues[1]))
-                self.totalPower.append(float(dataValues[2]))
+                self.loadPower.append(float(dataValues[2]))
             except Exception as e:
                 print("Arduino error: ", e)
                 continue
@@ -88,4 +88,4 @@ class arduino:
         Returns:
             float: Watts
         """
-        return sum(self.totalPower)/len(self.loadPower)
+        return sum(self.loadPower)/len(self.loadPower)
