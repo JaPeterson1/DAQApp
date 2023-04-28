@@ -1,4 +1,4 @@
-from solarshed.controllers.renogy_rover import RenogyRover
+from renogymodbus import RenogyChargeController
 import threading
 import constants
 import time
@@ -12,7 +12,7 @@ class solarcharger:
         Args:
             portname (str): The /dev/USBXXX port the controller is in. 
         """
-        self.controller = RenogyRover(portname=portname, slaveaddress = 1)
+        self.controller = RenogyChargeController(portname=portname, slaveaddress = constants.MODBUS_ADDRESS)
         self.dataQueue = []
         t = threading.Thread(target=self.updateThread)
         t.daemon = True
@@ -25,7 +25,7 @@ class solarcharger:
         Returns:
             float: Watts
         """
-        return self.controller.solar_power()
+        return self.controller.get_solar_power()
     
     def updateThread(self):
         """Looping thread that stores the power generated in an array every minute. 
