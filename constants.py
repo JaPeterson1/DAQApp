@@ -1,5 +1,5 @@
-serverUpdateFrequency = 15
-averageResolution = 1/15
+serverUpdateFrequency = 60
+averageResolution = 1/6
 
 SQL_HOST_IP = "192.168.50.2"
 SQL_USER_NAME = "daq"
