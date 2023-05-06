@@ -1,5 +1,6 @@
 from arduino import arduino as arduinoHelper
-from solarchargerSim import solarcharger
+from solarcharger import solarcharger
+from solarchargerSim import solarcharger as solarChargerSim
 from windTurbine1 import windTurbine
 from apscheduler.schedulers.blocking import BlockingScheduler
 from sql import sqlConnection
@@ -8,7 +9,7 @@ import time
 
 
 solarCharger1 = solarcharger(constants.SOLAR_CHARGER_1_PORT)
-solarCharger2 = solarcharger(constants.SOLAR_CHARGER_2_PORT)
+solarCharger2 = solarChargerSim(constants.SOLAR_CHARGER_2_PORT)
 windTurbine1 = windTurbine(constants.WIND_TURBINE_1_RADIUS_METERS, constants.WIND_TURBINE_1_EFFICIENCY, constants.WIND_TURBINE_1_AIR_DENSITY)
 windTurbine2 = windTurbine(constants.WIND_TURBINE_2_RADIUS_METERS, constants.WIND_TURBINE_2_EFFICIENCY, constants.WIND_TURBINE_2_AIR_DENSITY)
 arduino = arduinoHelper(constants.ARDUINO_PORT)
