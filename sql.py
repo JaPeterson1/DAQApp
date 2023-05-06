@@ -21,6 +21,11 @@ class sqlConnection():
                         solarIntensity FLOAT)")
         self.database.commit()
 
+    def runCommand(self, command:str):
+        cursor = self.database.cursor()
+        cursor.execute(command)
+        self.database.commit()
+
     def addRow(self, solarPower1, solarPower2, windPower1, windPower2, loadPower, windSpeed, solarIntensity):
         """Send a row to the SQL server. 
 
