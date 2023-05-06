@@ -12,4 +12,4 @@ class solarcharger:
         Returns:
             float: Watts
         """
-        return 10
+        return 0
