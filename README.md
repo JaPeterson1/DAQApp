@@ -6,7 +6,7 @@ The hardware consists of the following:
 - An Arduino reading data from three sensors:
   - An analog wind speed sensor
   - A solar intensity sensor
-  - A current sensor to measure AC current on the output (120 V) side. 
+  - A current sensor to measure AC current on the output (120 V) side
 - Two Renogy Rover Solar Charge Controllers
 
 All data is pushed to a mysql server. 
